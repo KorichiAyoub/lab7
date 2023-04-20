@@ -14,12 +14,14 @@ include("lib/func.user.php");
 
 //It is very stupid to share passwords within GIT, but for demostration, we will close our eyes on this principle.
 $dbhost = 'localhost';
-$dbuser = 'u229483663_todo';
-$dbpass = 'Ensia123456';
-$dbname = 'u229483663_todo';
+$dbuser = 'root';
+$dbpass = '';
+$dbname = 'db_todo';
 
 $db = new db($dbhost, $dbuser, $dbpass, $dbname);
 
 $vars=get_input_vars();
 $appuser=user_get_logged_user();
+$admindata= admin_get_data()
+
 ?>

@@ -12,4 +12,5 @@ ALTER TABLE `items`
 
 ALTER TABLE `items`
   MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT;
+
 COMMIT;

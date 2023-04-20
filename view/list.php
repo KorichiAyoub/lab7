@@ -6,6 +6,12 @@
         </div>
         <div class="col">
              <div class="float-right p-2" >
+               <?php 
+               if (isset($_COOKIE['is-admin'])) {
+                # code...
+                echo '<a href="./view/admin/index.php"><b style="color:white;">admin page </b></a>' ;
+               } 
+                ?>
                 <a href="index.php?action=logout"><b style="color:white;">Logout</b></a>
             </div>
         </div>
@@ -37,6 +43,11 @@
                   </div>
                   <input type="text" readonly class="form-control " aria-label="Text input with checkbox" value="<?php echo htmlspecialchars($items[$i]['title']);?>">
                   <div class="input-group-append">
+                  <button  class="btn btn-outline-secondary bg-danger text-white" type="button"  id="button-addon3" 
+                onclick="location='view/edit.php?item_id=<?php echo $items[$i]['item_id'];?>'"
+                >
+                <?php echo LANG_EDIT_ITEM; ?>
+                </button>
                     <button  class="btn btn-outline-secondary bg-danger text-white" type="button"  id="button-addon2" onclick="location='index.php?action=delete&item_id=<?php echo $items[$i]['item_id'];?>'">X</button>
                   </div>
                   </div>
