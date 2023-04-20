@@ -2,7 +2,8 @@
 CREATE TABLE `items` (
   `item_id` int(11) NOT NULL,
   `title` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `create_time` bigint(20) NOT NULL
+  `create_time` bigint(20) NOT NULL,
+  `completed` boolean 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 ALTER TABLE `items`
@@ -11,4 +12,5 @@ ALTER TABLE `items`
 
 ALTER TABLE `items`
   MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT;
+
 COMMIT;
