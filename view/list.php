@@ -52,12 +52,15 @@
                   </div>
                   </div>
             </div>
-  
             
             <?php
             }
-          ?>
+            ?>
       </div>
+            <?php 
+            
+            echo $bar->generateHtml($items);
+            ?>
     
     
 </div>
