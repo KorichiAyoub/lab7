@@ -1,6 +1,6 @@
 <?php
 
-define('LANG_APP_NAME','To-do App');
+define('LANG_APP_NAME','event-management-plateform');
 define('LANG_ADD_ITEM','Add Item');
 define('LANG_EDIT_ITEM','Edit');
 define('LANG_SIGNUP','Signup');

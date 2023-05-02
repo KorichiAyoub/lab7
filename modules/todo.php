@@ -1,21 +1,31 @@
 <?php
 
+
 switch($vars['action']){
     case "list":{
-        $number_per_page = 5;
-        if (isset($_GET['page']))
-            $offset = $_GET['page'] * $number_per_page;
-        else
-            $offset = 0;
+        include("pagination.php");
+        //$bar = new pagination_bar();
+        $bar = new Pagination($db);
+        $number_per_page = $bar->get_page_number();
+        if (isset($_GET['page'])) {
 
-        $items = $db->query('SELECT * FROM items LIMIT ?,?', $offset, $number_per_page)->fetchAll();
+            $offset = $_GET['page'] * $number_per_page;
+       
+         }
+        else {
+            
+             $offset = 0;
+         }
+
+            // call the getUsers method to retrieve all users from the database
+        $items = $bar->get_limited_items($offset);
         
         include("view/header.php");
         include("view/list.php");
         include("view/footer.php");
         exit;
     }break;
-
+   
   
     case "do_add":{
         $db->query("INSERT INTO items (title, userID) VALUES (?, ?)",$vars['title'], $_COOKIE['username']);
