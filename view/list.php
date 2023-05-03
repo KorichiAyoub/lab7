@@ -6,6 +6,19 @@
         </div>
         <div class="col">
              <div class="float-right p-2" >
+            
+            
+            <form method="POST" style="display:inline;" action="index.php?action=list" >
+            
+              <select name="filter" type="submit" onchange="this.form.submit()" class="form-select" style="background-color: #007bff; border:none; outline:none;" aria-label="Disabled select example" >
+                <option value="" selected>items-type</option>
+                <option value="completed">Completed</option>
+                <option value="pending">Pending</option>
+                <option value="all">All</option>
+              </select>
+            
+          </form>
+
                <?php 
                if (isset($_COOKIE['is-admin'])) {
                 # code...
@@ -38,7 +51,7 @@
                   <div class="input-group">
                   <div class="input-group-prepend">
                     <div class="input-group-text">
-                      <input type="checkbox"  >
+                     <a href="index.php?action=complete"> <input type="checkbox"  ></a>
                     </div>
                   </div>
                   <input type="text" readonly class="form-control " aria-label="Text input with checkbox" value="<?php echo htmlspecialchars($items[$i]['title']);?>">

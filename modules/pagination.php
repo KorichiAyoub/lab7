@@ -10,22 +10,27 @@ class Pagination {
         $this->number_per_page = 5;
     }
 
-    public function get_limited_items( $offset) {
-        
+    public function get_limited_items( $offset,$filter) {
+
+        if ($filter === "completed") {
+            $stmt = $this->conn->query('SELECT * FROM items WHERE completed = ? LIMIT ?,?',1,$offset,$this->number_per_page);
+            $result = $stmt->fetchAll();
+            return $result;
+        } else if($filter === "pending"){
+           
+            
+            $stmt = $this->conn->query('SELECT * FROM items WHERE completed = ? LIMIT ?,?',0,$offset,$this->number_per_page);
+            $result = $stmt->fetchAll();
+            return $result;
+        }
+        else 
+        {
+            $stmt = $this->conn->query('SELECT * FROM items LIMIT ?,?',$offset,$this->number_per_page);
+            $result = $stmt->fetchAll();
+            return $result;
+        }
 
         #$stmt = $this->conn->query(, $offset, $number_per_page)->fetchAll();
-        $stmt = $this->conn->query('SELECT * FROM items LIMIT ?,?', $offset,$this->number_per_page);
-        $result = $stmt->fetchAll();
-        return $result;
-    }
-
-    public function get_items() {
-        
-
-        #$stmt = $this->conn->query(, $offset, $number_per_page)->fetchAll();
-        $stmt = $this->conn->query('SELECT * FROM items ');
-        $result = $stmt->fetchAll();
-        return $result;
     }
 
     public function get_page_number()
