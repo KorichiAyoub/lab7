@@ -5,7 +5,9 @@ switch($vars['action']){
     case "list":{
         include("pagination.php");
         //$bar = new pagination_bar();
+        $filter = $_POST["filter"];
         $bar = new Pagination($db);
+        echo "$filter";
         $number_per_page = $bar->get_page_number();
         if (isset($_GET['page'])) {
 
@@ -18,7 +20,7 @@ switch($vars['action']){
          }
 
             // call the getUsers method to retrieve all users from the database
-        $items = $bar->get_limited_items($offset);
+        $items = $bar->get_limited_items($offset,$filter);
         
         include("view/header.php");
         include("view/list.php");
@@ -46,7 +48,11 @@ switch($vars['action']){
         exit;
     }break;
     
-    
+    case "complete":{
+        $db->query("UPDATE items SET completed=(?) WHERE item_id=(?)", 1, $vars['item_id']);
+        header("location: ../index.php");
+        exit;
+    }break;
    
     case "help":{
         //some code here to show help 
