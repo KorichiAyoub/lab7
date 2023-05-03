@@ -33,6 +33,15 @@ class Pagination {
         #$stmt = $this->conn->query(, $offset, $number_per_page)->fetchAll();
     }
 
+    public function get_items() {
+
+
+        #$stmt = $this->conn->query(, $offset, $number_per_page)->fetchAll();
+        $stmt = $this->conn->query('SELECT * FROM items ');
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
     public function get_page_number()
     {
         return $this->number_per_page;
